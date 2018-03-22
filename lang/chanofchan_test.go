@@ -7,30 +7,28 @@ type bus chan chan int
 
 func TestChanofChan(t *testing.T) {
 	b5 := make(bus, 5)
-	go func() {
-		for c := range b5 {
-			go func() {
-				for v := range c {
-					print(v)
-				}
-			}()
-		}
-	}()
 
 	go func() {
 		for i := 0; i < 6; i++ {
 			c := make(chan int)
 			b5 <- c
-			go func() {
+			go func(v int) {
+				i++ // i is a reference
 				for j := 0; j < 10; j++ {
-					c <- -1
+					c <- v
 				}
 				close(c)
-			}()
+			}(i)
 		}
 		close(b5)
 	}()
-	<-time.After(5 * time.Second)
+
+	for c := range b5 {
+		t.Logf("receive a chan from bus %v ", c)
+		for v := range c {
+			t.Logf("receive a int from chan %d ", v)
+		}
+	}
 }
 
 func TestChan(t *testing.T) {
@@ -67,4 +65,19 @@ func TestChan(t *testing.T) {
 	}()
 
 	<-time.After(5 * time.Second)
+}
+
+func TestGoRef(t *testing.T) {
+	v := 0
+	c := make(chan struct{})
+	go func() {
+		v += 2
+		c <- struct{}{}
+	}()
+	<-c
+	if v == 2 {
+		t.Log("v in goroutine is a reference ")
+	} else {
+		t.Log("v in goroutine is a value copy ")
+	}
 }
