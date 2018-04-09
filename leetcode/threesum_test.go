@@ -43,10 +43,18 @@ func TestThreeSum(t *testing.T) {
 				{-4, -1, 5},
 			},
 		},
+		{
+			[]int{-5, -4, -2, -1, -1, -1, 3, 5, 9, 9, 9},
+			[][]int{
+				{-2, -1, 3},
+				{-5, -4, 9},
+				{-4, -1, 5},
+			},
+		},
 	}
 
 	for i, testCase := range testCases {
-		s := threeSum(testCase.nums)
+		s := threeSum2(testCase.nums)
 		if len(s) != len(testCase.solution) {
 			t.Errorf("#%d len(s) got %d, expected %d ", i, len(s), len(testCase.solution))
 		}
