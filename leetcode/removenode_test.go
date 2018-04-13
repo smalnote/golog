@@ -28,11 +28,6 @@ func TestRemoveNthFromEnd(t *testing.T) {
 			1,
 			&ListNode{1, nil},
 		},
-		{
-			nil,
-			0,
-			nil,
-		},
 	}
 	for i, tc := range testCases {
 		hs := tc.head.String()

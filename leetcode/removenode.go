@@ -6,11 +6,8 @@ package leetcode
 // Note: Given n will always be valid.
 // Follow up: Could you do this in one pass.
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	if head == nil {
-		return nil
-	}
-	var preNode *ListNode
-	rmNode, cur := head, head
+	dummy := &ListNode{0, head}
+	preNode, rmNode, cur := dummy, head, head
 	count := 0
 	for cur != nil {
 		if count >= n {
@@ -19,13 +16,6 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 		cur = cur.Next
 		count++
 	}
-	var newHead *ListNode
-	if rmNode == head {
-		newHead = rmNode.Next
-		rmNode.Next = nil
-	} else {
-		preNode.Next = rmNode.Next
-		newHead = head
-	}
-	return newHead
+	preNode.Next = rmNode.Next
+	return dummy.Next
 }
