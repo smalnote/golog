@@ -16,5 +16,4 @@ package leetcode
 //           ("mississippi", "mis*is*p*.") => false
 func isMatch(s, p string) bool {
 	panic("unimplemented")
-	return false
 }
