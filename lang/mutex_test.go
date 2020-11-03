@@ -1,45 +1,36 @@
 package lang
 
 import (
+	"fmt"
 	"sync"
 	"testing"
 	"time"
 )
 
-func TestWaitGroup(t *testing.T) {
-	wg := sync.WaitGroup{}
+var mu sync.RWMutex
+var count int
 
-	wg.Add(10)
-	for i := 0; i < 10; i++ {
-		go func(v int, wg sync.WaitGroup) {
-			t.Log(v)
-			wg.Done()
-		}(i, wg)
-	}
-
-	wg.Wait()
-
+func TestRWMutex(t *testing.T) {
+	go A()
+	time.Sleep(2 * time.Second)
+	mu.Lock()
+	defer mu.Unlock()
+	count++
+	fmt.Println(count)
 }
 
-func TestMutexPanic(t *testing.T) {
-	mu := sync.Mutex{}
+func A() {
+	mu.RLock()
+	defer mu.RUnlock()
+	B()
+}
 
-	go func() {
-		mu.Lock()
-		defer mu.Unlock()
+func B() {
+	time.Sleep(5 * time.Second)
+	C()
+}
 
-		t.Log("lock 2")
-		<-time.After(1 * time.Second)
-		panic("hahahahah  ")
-	}()
-
-	go func() {
-		<-time.After(100 * time.Millisecond)
-		mu.Lock()
-		defer mu.Lock()
-
-		t.Log("lock 2")
-	}()
-
-	<-time.After(2 * time.Second)
+func C() {
+	mu.RLock()
+	defer mu.RUnlock()
 }
