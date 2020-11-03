@@ -24,6 +24,8 @@ func createUserV1() eaUser {
 	return u
 }
 
+// **eaUser 指向指针的指针, 可以改变指针的指向
+// *eaUser 指向eaUser的指针, 可以改变指向eaUser的内容
 //go:noinline
 func createUserV2(v **eaUser) eaUser {
 	u := eaUser{
