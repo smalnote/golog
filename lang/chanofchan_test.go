@@ -1,7 +1,9 @@
 package lang
 
-import "testing"
-import "time"
+import (
+	"testing"
+	"time"
+)
 
 type bus chan chan int
 
@@ -12,13 +14,13 @@ func TestChanofChan(t *testing.T) {
 		for i := 0; i < 6; i++ {
 			c := make(chan int)
 			b5 <- c
-			go func(v int) {
+			go func() {
 				i++ // i is a reference
 				for j := 0; j < 10; j++ {
-					c <- v
+					c <- i
 				}
 				close(c)
-			}(i)
+			}()
 		}
 		close(b5)
 	}()
