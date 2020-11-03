@@ -6,7 +6,7 @@ func maxProfit4(t int, prices []int) int {
 	if len(prices) <= 0 {
 		return 0
 	}
-	dp := make([]int, k)
+	dp := make([]int, len(prices))
 
 	for k := 0; k < t; k++ {
 		predp := 0
@@ -28,14 +28,14 @@ func maxProfit4(t int, prices []int) int {
 	return dp[len(prices)-1]
 }
 
-func TestMaxProfit(t *testing.T) {
+func TestMaxProfit4(t *testing.T) {
 	testCases := []struct {
-		k int
-		prices []int
+		k         int
+		prices    []int
 		maxProfit int
 	}{
 		{
-			2, 
+			2,
 			[]int{3, 3, 5, 0, 0, 3, 1, 4},
 			6,
 		},
