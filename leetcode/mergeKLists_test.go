@@ -1,8 +1,13 @@
 package leetcode
 
 // 把N上有序链表合并成一个, 把链表头构造成一个优先级队列, 每次从队列取, 取完之后将取的链表的下一个元素入队
-import "container/heap"
+import (
+	"container/heap"
+	"testing"
+)
+
 type PQ []*ListNode
+
 func (pq PQ) Len() int { return len(pq) }
 func (pq PQ) Less(i, j int) bool {
 	return pq[i].Val < pq[j].Val
@@ -44,4 +49,8 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	}
 
 	return head.Next
+}
+
+func TestMergeKLists(t *testing.T) {
+
 }
