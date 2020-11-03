@@ -7,11 +7,8 @@ func foo(s ...string) []string {
 	return s
 }
 
-
 func TestArrayParameterPassing(t *testing.T) {
 	s := []string{"hello", "world"}
-	foo(...s);
+	foo(s...)
 	t.Logf("s[1] = %s", s[1])
 }
-
-

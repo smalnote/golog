@@ -7,21 +7,21 @@ import (
 	"time"
 )
 
-var mu sync.RWMutex
+var mutex sync.RWMutex
 var count int
 
 func TestRWMutex(t *testing.T) {
 	go A()
 	time.Sleep(2 * time.Second)
-	mu.Lock()
-	defer mu.Unlock()
+	mutex.Lock()
+	defer mutex.Unlock()
 	count++
 	fmt.Println(count)
 }
 
 func A() {
-	mu.RLock()
-	defer mu.RUnlock()
+	mutex.RLock()
+	defer mutex.RUnlock()
 	B()
 }
 
@@ -31,6 +31,6 @@ func B() {
 }
 
 func C() {
-	mu.RLock()
-	defer mu.RUnlock()
+	mutex.RLock()
+	defer mutex.RUnlock()
 }
