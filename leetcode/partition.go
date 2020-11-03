@@ -1,10 +1,10 @@
-/** given a linked list and a value x, partition it such
-  * tha all nodes less than x come before nodes greater
-  * than or equal to x
-  * you should preserve the original relative order of the nodes 
-  * in each of the two partions.
-  */
 package leetcode
+
+/* given a linked list and a value x, partition it such
+tha all nodes less than x come before nodes greater
+than or equal to x
+you should preserve the original relative order of the nodes
+in each of the two partions. */ /**/
 
 func partition(head *ListNode, x int) *ListNode {
 	n := &ListNode{0, nil}
@@ -13,11 +13,11 @@ func partition(head *ListNode, x int) *ListNode {
 	mtail := m
 	for k := head; k != nil; k = k.Next {
 		if k.Val < x {
-			ntail.Next = k	
+			ntail.Next = k
 			ntail = ntail.Next
 		} else {
 			mtail.Next = k
-			mtail= mtail.Next
+			mtail = mtail.Next
 		}
 	}
 	if ntail != nil {
@@ -31,7 +31,7 @@ func partition(head *ListNode, x int) *ListNode {
 		newHead = n.Next
 		ntail.Next = m.Next
 	} else if m.Next != nil {
-		newHead = m.Next 
+		newHead = m.Next
 	}
 	return newHead
 }
