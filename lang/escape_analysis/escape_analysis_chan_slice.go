@@ -1,4 +1,4 @@
-package main
+package escapeanalysis
 
 // 测试chan, slice类型的逃逸分析
 // go build -gcflags " -m -m "

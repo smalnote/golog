@@ -1,4 +1,4 @@
-package main
+package escapeanalysis
 
 // 闭包对逃逸分析的影响
 // 闭包, 在匿名函数中引用局部变量

@@ -1,8 +1,8 @@
-package main
+package escapeanalysis
 
 // run command below at directory this file in
 // go build -gcflags " -m -m "
-func main() {
+func escapeAnalysis() {
 	createUserV1()
 	var v *eaUser
 	createUserV2(&v)
