@@ -6,6 +6,7 @@ package main
 func escapeAnalysisChanSlice() {
 	createSliceButNotReturn()
 	createSliceAndReturn()
+	createUnknownSizeSlice(5)
 	c := createChan()
 	v, ok := <-c
 	if ok {
@@ -16,6 +17,14 @@ func escapeAnalysisChanSlice() {
 //go:noinline
 func createSliceButNotReturn() {
 	s := make([]int, 10) // not escape to heap, in stack frame
+	for i := range s {
+		s[i] = i
+	}
+}
+
+//go:noinline
+func createUnknownSizeSlice(size int) {
+	s := make([]int, size) // escaep to heap for the size is unknown at compiling time
 	for i := range s {
 		s[i] = i
 	}
