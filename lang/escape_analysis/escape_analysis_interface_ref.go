@@ -12,10 +12,12 @@ type sortable interface {
 	Swap(i, j int)
 }
 
+//go:noinline
 func interfaceSort(s sortable) {
 	quickSort(s, 0, s.Len())
 }
 
+//go:noinline
 func sliceSort(a []int) {
 	sliceQuickSort(a, 0, len(a))
 }
