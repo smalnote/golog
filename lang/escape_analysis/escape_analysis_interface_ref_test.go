@@ -10,7 +10,7 @@ import (
 // go test -run none -bench InterfaceSort -benchtime 3s -benchmem -memprofile mem.out
 // go tool pprof -alloc_space escape_analysis.test mem.out
 // list Benchmark
-
+// got test ... > build_detail 2>&1, 1 stdout, 2 stderr, redirect 2 to 1 (2>&1)
 func BenchmarkSliceSort(b *testing.B) {
 	a := generateRandomInts(100)
 
@@ -41,6 +41,7 @@ func TestSliceSort(t *testing.T) {
 	}
 }
 
+//go:noinline
 func generateRandomInts(len int) []int {
 	a := make([]int, len)
 
