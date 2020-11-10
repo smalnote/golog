@@ -11,14 +11,14 @@ func TestChanofChan(t *testing.T) {
 	b5 := make(bus, 5)
 
 	go func() {
+		v := 0
 		for i := 0; i < 6; i++ {
 			c := make(chan int)
 			b5 <- c
 			go func() {
-				i++ // i is a reference
-				for j := 0; j < 10; j++ {
-					c <- i
-				}
+				v = v + 100 // v is a reference
+				<-time.After(100 * time.Millisecond)
+				c <- v
 				close(c)
 			}()
 		}
