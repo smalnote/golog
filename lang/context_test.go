@@ -6,15 +6,22 @@ import (
 	"time"
 )
 
+type contextKey1 struct{}
+type contextKey2 struct{}
+
 func TestValue(t *testing.T) {
 	var ctx context.Context
 
 	ctx = context.Background()
 
-	ctx = context.WithValue(ctx, "A", "AA")
-	t.Log(ctx.Value("A"))
-	ctx = context.WithValue(ctx, "A", "AAA")
-	t.Log(ctx.Value("A"))
+	key1 := contextKey1{}
+	key2 := contextKey2{}
+
+	t.Log(ctx.Value(key1))
+	ctx = context.WithValue(ctx, key1, "AA")
+	t.Log(ctx.Value(key1))
+	ctx = context.WithValue(ctx, key2, "AAA")
+	t.Log(ctx.Value(key2))
 }
 
 func TestTimeout(t *testing.T) {
