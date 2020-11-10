@@ -41,7 +41,7 @@ func (mu *mu) IsLocked() bool {
 	return mu.isLocked
 }
 
-func NewMutex() *mu {
+func newMutex() *mu {
 	return &mu{
 		ch:       make(chan struct{}, 1),
 		isLocked: false,
@@ -49,7 +49,7 @@ func NewMutex() *mu {
 }
 
 func TestTryLock(t *testing.T) {
-	mu := NewMutex()
+	mu := newMutex()
 	v := 0
 	wg := sync.WaitGroup{}
 	wg.Add(2)
