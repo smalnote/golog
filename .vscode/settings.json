@@ -1,8 +1,24 @@
 {
-    "go.testFlags": ["-v"],
-    "editor.detectIndentation": false,  //关闭检测第一个tab后面就tab
+    "go.testFlags": [
+        "-v"
+    ],
+    "editor.detectIndentation": false, //关闭检测第一个tab后面就tab
     "editor.renderControlCharacters": true, //制表符显示->
     "editor.renderWhitespace": "all", //空格显示...
-    "editor.tabSize": 4,//tab为四个空格
-    "editor.insertSpaces": true //转为空格
+    "editor.tabSize": 4, //tab为四个空格
+    "editor.insertSpaces": true, //转为空格
+    "go.useLanguageServer": true,
+    "go.toolsEnvVars": {
+        "GO111MODULE": "on",
+        "GOPROXY": "https://goproxy.io",
+    },
+    "go.docsTool": "godoc",
+    "go.lintOnSave": "file",
+    "go.formatTool": "goimports",
+    "go.formatFlags": [],
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4,
+    },
 }
