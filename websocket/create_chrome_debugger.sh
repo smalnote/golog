@@ -1,0 +1,1 @@
+C:\\'Program Files (x86)'\\Google\\Chrome\\Application\\Chrome.exe --headless --no-sandbox --no-first-run --remote-debugging-port=18000

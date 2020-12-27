@@ -5,11 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch",
+      "name": "websocket",
       "type": "go",
       "request": "launch",
       "mode": "auto",
-      "program": "${fileDirname}",
+      "program": "${workspaceFolder}/websocket",
       "env": {},
       "args": []
     }
