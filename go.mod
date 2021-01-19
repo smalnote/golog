@@ -10,4 +10,5 @@ require (
 	github.com/koding/websocketproxy v0.0.0-20181220232114-7ed82d81a28c
 	github.com/mackerelio/go-osstat v0.1.0
 	github.com/mattn/go-colorable v0.1.8 // indirect
+	golang.org/x/time v0.0.0-20201208040808-7e3f01d25324
 )
