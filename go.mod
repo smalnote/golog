@@ -11,4 +11,5 @@ require (
 	github.com/mackerelio/go-osstat v0.1.0
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	golang.org/x/time v0.0.0-20201208040808-7e3f01d25324
+	golang.org/x/tools v0.1.0 // indirect
 )
