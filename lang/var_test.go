@@ -12,3 +12,8 @@ func TestVarChan(t *testing.T) {
 
 	t.Logf("len(c) == %v", len(c))
 }
+
+func TestMaxDuration(t *testing.T) {
+	inf := 1<<63 - 1
+	t.Logf("%+v", inf)
+}
